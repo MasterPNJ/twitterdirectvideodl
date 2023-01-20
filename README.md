@@ -24,7 +24,8 @@ You need access to the tweeter API with preferably "Elevated" access to use this
     pip install os
 
     5. Replace what is marked in config.ini by putting your own keys. ( don't forget to also put your bearer_token line 26 temporarily until the problem is fixed ) 
-    6. Run the program with : python .\twittersave.py
+    6. Write your search term on line 58 ( I will make a menu later, this is a temporary method )
+    7. Run the program with : python .\twittersave.py
 
 # Information
 
