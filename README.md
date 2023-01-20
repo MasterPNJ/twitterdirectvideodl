@@ -8,7 +8,7 @@ You need access to the tweeter API with preferably "Elevated" access to use this
     2. You need to have python installed on your computer. I used python 3.11.0. https://www.python.org/downloads/
     3. You need to download the program. You can either download the zip file or clone the repository.
     4. You need to install all the necessary libraries which are :
-    
+
     pip install tweepy
     pip install configparser
     pip install pandas
@@ -28,4 +28,6 @@ You need access to the tweeter API with preferably "Elevated" access to use this
 
 # Information
 
-    Only use this code for personal use, without commercial purpose and without keeping personal information.
+    Use this in accordance with the rules of the Twitter Terms of Use. https://developer.twitter.com/en/developer-terms
+
+    
