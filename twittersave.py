@@ -33,17 +33,6 @@ client = tweepy.Client(bearer_token, api_key, api_key_secret, access_token, acce
 auth = tweepy.OAuth1UserHandler(api_key, api_key_secret, access_token, access_token_secret)
 api = tweepy.API(auth)
 
-#Delete all existing rules before creating new ones to avoid duplication and syntax errors in the rules
-#To use you just have to remove the comments
-
-# list = []
-
-# list = stream.get_rules() # get all rules
-
-#print(list)
-# for delet in list:   
-#     stream.delete_rules(1600206830084029440) # delete all rules
-
 #Generate a random character string for the video file
 
 def id_generator(size=10, chars=string.ascii_uppercase + string.digits):
@@ -53,12 +42,6 @@ rande = id_generator()
 
 columns = ['Lien']
 data = []
-
-#Write your search_terms here
-search_terms = ["#foot"]
-
-#show your search
-print(search_terms)
 
 class MyStream(tweepy.StreamingClient):
     
@@ -117,19 +100,67 @@ class MyStream(tweepy.StreamingClient):
 
 #-----------------
 
+search_terms = []
 
-stream = MyStream(bearer_token=bearer_token)
+def menu():
+    print("1. View saved search terms")
+    print("2. Add new search terms")
+    print("3. Delete all search terms")
+    print("4. Launch the main program")
+    choice = input("Make your choice: ")
+    if choice == "1":
+        display_terms()
+    elif choice == "2":
+        add_terms()
+    elif choice == "3":
+        delete_terms()
+    elif choice == "4":
+        main_program()
+    else:
+        print("Invalid choice, please try again.")
+        menu()
+
+def display_terms():
+    stream = MyStream(bearer_token=bearer_token)
+    list = []
+    list = stream.get_rules() # get all rules
+    print(list)
+    menu()
+
+def add_terms():
+    stream = MyStream(bearer_token=bearer_token)
+    search_terms = []
+    new_term = input("Enter the new search term: ")
+    search_terms.append(new_term)
+    for term in search_terms:
+        stream.add_rules(tweepy.StreamRule(term))
+    print("Term successfully added.")
+    menu()
+
+def delete_terms():
+    stream = MyStream(bearer_token=bearer_token)
+    
+    list = []
+    list = stream.get_rules() # get all rules
+    
+    try:
+        for delet in list:   
+            stream.delete_rules(delet) # delete all rules
+    except tweepy.errors.BadRequest as e:
+        print("All rules have been successfully removed")
+        menu()
+
+def main_program():
+    stream = MyStream(bearer_token=bearer_token)
+    list = []
+    list = stream.get_rules() # get all rules
+    print(list)
+    for term in search_terms:
+        stream.add_rules(tweepy.StreamRule(term))
+
+    stream.filter(tweet_fields=["referenced_tweets"])
+
+menu()
+
 
 #-----------------
-list = []
-
-list = stream.get_rules() # get all rules
-
-print(list)
-
-#-----------------
-
-for term in search_terms:
-    stream.add_rules(tweepy.StreamRule(term))
-
-stream.filter(tweet_fields=["referenced_tweets"])
