@@ -14,7 +14,7 @@ import os
 
 
 # read config file
-config = configparser.ConfigParser()
+config = configparser.RawConfigParser()
 config.read('config.ini')
 
 api_key = config['twitter']['api_key']
@@ -23,8 +23,7 @@ api_key_secret = config['twitter']['api_key_secret']
 access_token = config['twitter']['access_token']
 access_token_secret = config['twitter']['access_token_secret']
 
-bearer_token = 'your_bearer_token'
-#for unknow reason, you need to write your bearer_token here
+bearer_token = config['twitter']['bearer_token']
 
 #Connection to the Twitter api
 
