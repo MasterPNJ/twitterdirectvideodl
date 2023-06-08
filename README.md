@@ -29,6 +29,8 @@
 
 ## Information
 
+This code is a Twitter streamer that extracts URLs from tweets, checks their validity, and downloads Twitter videos using youtube_dl. It also allows the user to add, delete, and view search terms for the Twitter stream.
+
 Use this in accordance with the rules of the Twitter Terms of Use. https://developer.twitter.com/en/developer-terms
 
     
